@@ -19,11 +19,11 @@ export default function Home() {
                 <DataChart/>
             </div>
             <Announcements/>
-            <div className="flex flex-row w-full justify-evenly mt-10">
+            {/* <div className="flex flex-row w-full justify-evenly mt-10">
                 <div className="pt-10 pb-10 pl-20 pr-20 border-2 border-slate-200 rounded-lg">Potluck Party</div>
                 <div className="pt-10 pb-10 pl-20 pr-20 border-2 border-slate-200 rounded-lg">Live Menu</div>
                 <div className="pt-10 pb-10 pl-20 pr-20 border-2 border-slate-200 rounded-lg">Pre-Order</div>
-            </div>
+            </div> */}
         </div>
     )
 }
