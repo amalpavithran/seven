@@ -1,6 +1,7 @@
 'use client'
 import { auth } from "@/lib/firebase/client"
-import { onAuthStateChanged } from "firebase/auth"
+import { count } from "console"
+import { onAuthStateChanged, signOut } from "firebase/auth"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -23,6 +24,17 @@ const Navbar: React.FC<NavbarProps> = () => {
             }
         })
     })
+
+    const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      console.log("User signed out successfully");
+      router.push("/"); 
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
+
     return (
         <div className="w-3/4 m-auto justify-between h-20 bg-slate-50 border-1 border-slate-200 flex flex-row rounded-b-lg">
             <div className="flex">
@@ -37,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <input type="string" />
                 </div>
                 <a className="pt-1 pr-2 pl-2"><Image src={"/icons/cart.png"} width={iconsSize} height={iconsSize} alt="cart" /></a>
-                <a className="p-1"><Image src={"/icons/user.png"} width={iconsSize} height={iconsSize} alt="user" /></a>
+                <a className="p-1" onClick={handleSignOut}><Image src={"/icons/user.png"}  width={iconsSize} height={iconsSize} alt="user" /></a>
             </div>
         </div>
     )
